@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5">
+  <meta name="description" content="Sportfischerverein Angelbachtal e.V. – Angeln mit Geschichte und Herz am Erlensee seit 1981.">
+  <title>Sportfischer-Verein Angelbachtal e.V.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --blue:#0055e5;--cyan:#00b4d8;--dark:#0f172a;--mid:#334155;
+      --light:#f8fafc;--white:#fff;--border:#e2e8f0;--r:12px;
+      --blue-soft:#eff6ff;--cyan-soft:#ecfeff;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:"Plus Jakarta Sans",sans-serif;background:var(--light);color:var(--dark);line-height:1.65}
+
+    /* ── SKIP LINK ── */
+    .skip{position:absolute;top:-40px;left:16px;z-index:9999;background:var(--blue);color:#fff;padding:8px 16px;border-radius:6px;text-decoration:none;font-weight:600;transition:top .2s}
+    .skip:focus{top:16px}
+
+    /* ── NAV ── */
+    nav{position:fixed;top:0;width:100%;z-index:1000;padding:0 52px;height:68px;display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);transition:height .3s}
+    .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+    .logo-icon{width:38px;height:38px;background:var(--blue);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+    .logo-text strong{font-family:"Outfit",sans-serif;font-size:14px;font-weight:800;color:var(--dark);display:block;line-height:1.2;letter-spacing:-.01em}
+    .logo-text span{font-size:10px;color:#64748b;letter-spacing:1px;text-transform:uppercase}
+    .nav-center{display:flex;gap:4px;list-style:none}
+    .nav-center a{color:var(--mid);text-decoration:none;font-size:13px;font-weight:500;padding:7px 16px;border-radius:8px;transition:all .2s}
+    .nav-center a:hover,.nav-center a.active{background:var(--blue-soft);color:var(--blue)}
+    .nav-right{display:flex;gap:10px;align-items:center}
+    .btn-search{background:none;border:none;cursor:pointer;width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#64748b;transition:background .2s;font-size:16px}
+    .btn-search:hover{background:var(--border)}
+    .btn-login{background:var(--dark);color:#fff;padding:7px 16px;border-radius:8px;font-size:12px;font-weight:600;letter-spacing:.5px;text-decoration:none;opacity:.4;cursor:default;pointer-events:none;font-family:"Plus Jakarta Sans",sans-serif}
+    .btn-login-note{font-size:10px;color:#94a3b8;margin-left:-4px}
+
+    /* ── HERO ── */
+    .hero{height:72vh;min-height:520px;position:relative;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;margin-top:68px}
+    .hero-bg{position:absolute;inset:0}
+    .hero-bg svg{width:100%;height:100%;display:block}
+    .hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,30,80,.55) 0%,rgba(0,15,40,.7) 100%)}
+    .hero-content{position:relative;z-index:2;padding:0 24px;max-width:840px}
+    .hero-tag{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#93c5fd;font-weight:600;margin-bottom:18px;display:block}
+    .hero-h1{font-family:"Outfit",sans-serif;font-weight:800;font-size:clamp(2.2rem,5.5vw,4rem);color:#fff;line-height:1.08;letter-spacing:-.02em;margin-bottom:16px}
+    .hero-h1 .ac{color:#67e8f9}
+    .hero-sub{font-size:1.1rem;color:rgba(255,255,255,.7);margin-bottom:38px;font-weight:300}
+    .hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:7px;padding:12px 26px;border-radius:10px;font-family:"Plus Jakarta Sans",sans-serif;font-size:13px;font-weight:600;text-decoration:none;border:none;cursor:pointer;transition:all .22s;letter-spacing:.2px}
+    .btn-primary{background:var(--blue);color:#fff;box-shadow:0 4px 14px rgba(0,85,229,.35)}
+    .btn-primary:hover{background:#0044cc;transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,85,229,.4)}
+    .btn-outline-w{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(8px)}
+    .btn-outline-w:hover{background:rgba(255,255,255,.2)}
+    .btn-outline{background:#fff;color:var(--blue);border:1.5px solid var(--blue)}
+    .btn-outline:hover{background:var(--blue-soft)}
+    .btn-whatsapp{background:#25d366;color:#fff}
+    .btn-whatsapp:hover{background:#20bb5a;transform:translateY(-2px)}
+
+    /* ── SECTIONS ── */
+    .section{padding:88px 0}
+    .section-alt{padding:88px 0;background:#f1f5f9}
+    .container{max-width:1180px;margin:0 auto;padding:0 52px}
+    .section-label{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;font-weight:700;color:var(--blue);margin-bottom:10px}
+    h2.sh{font-family:"Outfit",sans-serif;font-weight:800;font-size:clamp(1.8rem,3.5vw,2.6rem);color:var(--dark);letter-spacing:-.025em;line-height:1.1;margin-bottom:10px}
+    h2.sh .ac{color:var(--blue)}
+    .sh-line{width:40px;height:3px;background:linear-gradient(to right,var(--blue),var(--cyan));border-radius:2px;margin:14px 0 28px}
+
+    /* ── PHOTO PLACEHOLDER ── */
+    .photo{width:100%;background:linear-gradient(135deg,#dbeafe,#e0f2fe);border:2px dashed #93c5fd;border-radius:var(--r);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#3b82f6;font-weight:600;text-align:center;padding:32px 20px;gap:8px}
+    .photo-icon{font-size:32px;opacity:.6}
+    .photo-label{font-size:13px;color:#2563eb;font-weight:600}
+    .photo-hint{font-size:11px;color:#64748b;font-weight:400;margin-top:2px}
+    .photo-16-9{aspect-ratio:16/9}
+    .photo-4-3{aspect-ratio:4/3}
+    .photo-1-1{aspect-ratio:1/1}
+    .photo-3-2{aspect-ratio:3/2}
+
+    /* ── CARDS ── */
+    .card{background:var(--white);border-radius:var(--r);border:1px solid var(--border);padding:28px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+    .card-hover{transition:box-shadow .25s,transform .25s}
+    .card-hover:hover{box-shadow:0 8px 30px rgba(0,0,0,.1);transform:translateY(-3px)}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .grid-auto{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+
+    /* ── VEREIN ── */
+    .verein-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;margin-bottom:72px}
+    .taglines{text-align:center;padding:48px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin:56px 0}
+    .tagline-1{font-family:"Outfit",sans-serif;font-size:clamp(1.4rem,3vw,2.2rem);font-weight:800;color:var(--dark);letter-spacing:-.02em;margin-bottom:10px}
+    .tagline-2{font-size:1.1rem;color:#64748b;font-weight:300}
+    .vorstand-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;margin-top:48px}
+    .vorstand-list{list-style:none;display:flex;flex-direction:column;gap:0}
+    .vorstand-item{display:flex;gap:0;padding:12px 0;border-bottom:1px solid var(--border);font-size:14px}
+    .vorstand-item:last-child{border-bottom:none}
+    .vorstand-role{color:#64748b;font-weight:500;width:260px;flex-shrink:0}
+    .vorstand-name{font-weight:700;color:var(--dark)}
+    .gewaesser-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:48px}
+    .gewaesser-card{border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
+    .gc-head{padding:20px 24px;background:var(--blue);color:#fff}
+    .gc-head h3{font-family:"Outfit",sans-serif;font-size:1.1rem;font-weight:800;margin-bottom:4px}
+    .gc-head p{font-size:12px;opacity:.8}
+    .gc-body{padding:24px;background:var(--white)}
+    .gc-body p{font-size:14px;line-height:1.75;color:var(--mid);margin-bottom:12px}
+    .gc-body p:last-child{margin-bottom:0}
+    .highlights-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+    .hl-card{background:var(--blue-soft);border-radius:var(--r);padding:22px;text-align:center;border:1px solid #bfdbfe}
+    .hl-icon{font-size:28px;margin-bottom:10px}
+    .hl-title{font-family:"Outfit",sans-serif;font-size:.95rem;font-weight:700;color:var(--dark);margin-bottom:6px}
+    .hl-desc{font-size:13px;color:var(--mid)}
+    .erlensee-box{background:linear-gradient(135deg,#eff6ff,#ecfeff);border-radius:var(--r);padding:36px 40px;margin-top:48px;border:1px solid #bae6fd}
+    .erlensee-stats{display:flex;gap:40px;margin:20px 0 28px;flex-wrap:wrap}
+    .erlensee-stat{text-align:center}
+    .es-num{font-family:"Outfit",sans-serif;font-size:2rem;font-weight:800;color:var(--blue);line-height:1}
+    .es-label{font-size:12px;color:#64748b;margin-top:3px}
+    .fish-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+    .fish-chip{background:var(--white);border:1px solid #bfdbfe;border-radius:20px;padding:5px 14px;font-size:13px;color:var(--blue);font-weight:600}
+
+    /* ── NEWS ── */
+    .news-badge{background:var(--blue);color:#fff;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;display:inline-block;margin-bottom:12px;letter-spacing:.3px}
+    .news-badge.green{background:#059669}
+    .news-card h3{font-family:"Outfit",sans-serif;font-size:1.2rem;font-weight:800;color:var(--dark);margin-bottom:12px;letter-spacing:-.01em;line-height:1.25}
+    .news-card p{font-size:14px;line-height:1.75;color:var(--mid)}
+    .news-card p+p{margin-top:10px}
+    .news-card h4{font-family:"Outfit",sans-serif;font-size:.95rem;font-weight:700;color:var(--dark);margin:14px 0 6px}
+    .news-more{text-align:center;margin-top:40px}
+    .news-list{list-style:none;margin-top:8px;padding-left:0}
+    .news-list li{padding:6px 0;padding-left:20px;position:relative;font-size:14px;color:var(--mid)}
+    .news-list li::before{content:"●";position:absolute;left:0;color:var(--blue);font-size:8px;top:9px}
+
+    /* ── MITGLIEDSCHAFT ── */
+    .price-card{border-radius:var(--r);overflow:hidden;border:2px solid var(--border);text-align:center}
+    .pc-head{padding:28px 24px 20px;background:var(--blue)}
+    .pc-head.cyan{background:linear-gradient(135deg,#0891b2,#0e7490)}
+    .pc-icon{font-size:32px;margin-bottom:8px}
+    .pc-head h3{font-family:"Outfit",sans-serif;font-size:1.2rem;font-weight:800;color:#fff;margin-bottom:4px}
+    .pc-head p{font-size:12px;color:rgba(255,255,255,.75)}
+    .pc-body{padding:28px 24px;background:#fff}
+    .pc-price{font-family:"Outfit",sans-serif;font-size:3rem;font-weight:800;color:var(--blue);line-height:1}
+    .pc-price.cyan{color:#0891b2}
+    .pc-period{font-size:13px;color:#64748b;margin:6px 0 16px}
+    .pc-then{background:#f8fafc;border-radius:8px;padding:12px;font-size:13px;color:var(--mid);margin-top:12px}
+    .pc-then strong{color:var(--dark)}
+    .grill-box{background:linear-gradient(135deg,#fef3c7,#fde68a);border-radius:var(--r);padding:36px 40px;margin-top:48px;border:1px solid #fcd34d}
+    .grill-box h3{font-family:"Outfit",sans-serif;font-size:1.5rem;font-weight:800;color:#78350f;margin-bottom:14px}
+    .grill-box p{font-size:14.5px;line-height:1.8;color:#92400e}
+    .cta-box{background:linear-gradient(135deg,var(--dark),#1e293b);border-radius:var(--r);padding:48px 52px;margin-top:48px;text-align:center}
+    .cta-box h3{font-family:"Outfit",sans-serif;font-size:1.8rem;font-weight:800;color:#fff;margin-bottom:10px}
+    .cta-box p{color:rgba(255,255,255,.65);margin-bottom:28px;font-size:15px}
+    .cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+    .contact-info{display:flex;gap:24px;justify-content:center;margin-top:20px;flex-wrap:wrap}
+    .contact-info a{color:rgba(255,255,255,.5);text-decoration:none;font-size:13px;transition:color .2s}
+    .contact-info a:hover{color:#fff}
+
+    /* ── VEREINSLEBEN ── */
+    .vl-card{border-radius:var(--r);overflow:hidden;border:1px solid var(--border);background:#fff}
+    .vl-card-body{padding:22px}
+    .vl-date{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;color:var(--blue);margin-bottom:8px}
+    .vl-card-body h3{font-family:"Outfit",sans-serif;font-size:1.1rem;font-weight:800;color:var(--dark);margin-bottom:10px}
+    .vl-card-body p{font-size:13.5px;color:var(--mid);line-height:1.7}
+    .vl-card-body h4{font-size:.9rem;font-weight:700;color:var(--dark);margin:10px 0 5px}
+
+    /* ── TERMINKALENDER ── */
+    .termine-wrap{overflow-x:auto;border-radius:var(--r);box-shadow:0 4px 20px rgba(0,0,0,.07);border:1px solid var(--border)}
+    .termine-table{width:100%;border-collapse:collapse;min-width:680px}
+    .termine-table th{background:var(--blue);color:#fff;padding:14px 20px;text-align:left;font-family:"Outfit",sans-serif;font-size:13px;font-weight:700;letter-spacing:.3px}
+    .termine-table td{padding:11px 20px;border-bottom:1px solid #f1f5f9;font-size:13.5px;color:var(--mid)}
+    .termine-table tr:last-child td{border-bottom:none}
+    .termine-table tr:hover td{background:#f8fafc}
+    .month-row td{background:#f1f5f9 !important;font-family:"Outfit",sans-serif;font-weight:800;color:var(--blue);text-transform:uppercase;font-size:11px;letter-spacing:2px;padding:10px 20px}
+    .termine-bold td:nth-child(2){font-weight:700;color:var(--dark)}
+
+    /* ── FOOTER ── */
+    footer{background:var(--dark);color:#fff;padding:60px 0 32px}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+    .footer-brand p{font-size:13px;color:#94a3b8;line-height:1.7;max-width:240px;margin-top:14px}
+    .footer-h{font-family:"Outfit",sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:#c8a84b;margin-bottom:14px}
+    .footer-links{list-style:none;display:flex;flex-direction:column;gap:9px}
+    .footer-links a{font-size:13px;color:#94a3b8;text-decoration:none;transition:color .2s}
+    .footer-links a:hover{color:#fff}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:22px;display:flex;justify-content:space-between;font-size:12px;color:#475569;flex-wrap:wrap;gap:10px}
+
+    /* ── REVEAL ── */
+    .rv{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+    .rv.vis{opacity:1;transform:none}
+    .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:1024px){.container{padding:0 28px}.footer-grid{grid-template-columns:1fr 1fr;gap:32px}}
+    @media(max-width:768px){nav{padding:0 20px}.nav-center{display:none}.btn-login-note{display:none}.verein-hero-grid,.vorstand-grid,.gewaesser-grid,.grid-2,.grid-3{grid-template-columns:1fr}.highlights-grid{grid-template-columns:1fr 1fr}.container{padding:0 20px}.erlensee-box{padding:24px}.cta-box{padding:32px 24px}.footer-grid{grid-template-columns:1fr}}
+    @media(max-width:480px){.highlights-grid,.grid-auto{grid-template-columns:1fr}.hero-btns,.cta-btns{flex-direction:column;align-items:center}}
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip">Zum Inhalt springen</a>
+
+<!-- ═══════════════════ NAV ═══════════════════ -->
+<nav role="navigation" aria-label="Hauptnavigation" id="nav">
+  <a href="#" class="logo" aria-label="Startseite">
+    <div class="logo-icon" aria-hidden="true">🎣</div>
+    <div class="logo-text">
+      <strong>SFV Angelbachtal</strong>
+      <span>e.V. · seit 1981</span>
+    </div>
+  </a>
+  <ul class="nav-center" role="list">
+    <li><a href="#verein" class="active">Verein</a></li>
+    <li><a href="#news">News</a></li>
+    <li><a href="#mitgliedschaft">Mitgliedschaft</a></li>
+    <li><a href="#vereinsleben">Vereinsleben</a></li>
+    <li><a href="#termine">Termine 2026</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="btn-search" aria-label="Suche (demnächst)" title="Suche – demnächst verfügbar" disabled>🔍</button>
+    <span class="btn-login" aria-label="Login – demnächst verfügbar">Log in</span>
+    <span class="btn-login-note">demnächst</span>
+  </div>
+</nav>
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<header class="hero" role="banner">
+  <div class="hero-bg" aria-hidden="true">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 720" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="hsky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0c1e40"/><stop offset="40%" stop-color="#0d3875"/><stop offset="72%" stop-color="#1460a8"/><stop offset="88%" stop-color="#3a88cc"/><stop offset="100%" stop-color="#68aee0"/></linearGradient>
+        <linearGradient id="hwat" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#5090c8"/><stop offset="30%" stop-color="#2260a0"/><stop offset="70%" stop-color="#103568"/><stop offset="100%" stop-color="#081e40"/></linearGradient>
+        <radialGradient id="hsun" cx="40%" cy="55%" r="30%"><stop offset="0%" stop-color="#ffe080" stop-opacity=".5"/><stop offset="100%" stop-color="transparent"/></radialGradient>
+      </defs>
+      <rect width="1600" height="420" fill="url(#hsky)"/>
+      <ellipse cx="640" cy="420" rx="380" ry="80" fill="url(#hsun)"/>
+      <!-- Clouds -->
+      <ellipse cx="1100" cy="110" rx="160" ry="52" fill="white" fill-opacity=".1"/>
+      <ellipse cx="1220" cy="95" rx="110" ry="40" fill="white" fill-opacity=".07"/>
+      <ellipse cx="300" cy="150" rx="130" ry="44" fill="white" fill-opacity=".08"/>
+      <rect y="420" width="1600" height="300" fill="url(#hwat)"/>
+      <rect y="418" width="1600" height="4" fill="#c8a84b" fill-opacity=".3"/>
+      <!-- Gold shimmer -->
+      <rect y="432" x="440" width="400" height="1.5" fill="#ffe080" fill-opacity=".25"/>
+      <rect y="448" x="500" width="300" height="1" fill="#ffe080" fill-opacity=".18"/>
+      <!-- Forest left -->
+      <polygon points="0,420 0,315 30,280 58,335 84,268 112,322 138,252 166,308 192,238 220,295 245,265 272,310 298,245 324,295 350,420" fill="#071810"/>
+      <!-- Forest right -->
+      <polygon points="1600,420 1600,310 1572,275 1544,330 1518,262 1490,318 1464,248 1436,304 1410,234 1382,290 1356,260 1328,305 1302,240 1276,290 1250,420" fill="#071810"/>
+      <!-- Vereinsheim silhouette hint (center) -->
+      <rect x="740" y="388" width="120" height="32" fill="#0a1e10" opacity=".6" rx="2"/>
+      <polygon points="730,388 800,355 870,388" fill="#0a1e10" opacity=".6"/>
+      <!-- Water ripples -->
+      <ellipse cx="800" cy="470" rx="200" ry="10" fill="white" fill-opacity=".04"/>
+      <!-- Stars -->
+      <circle cx="180" cy="55" r="1.2" fill="white" fill-opacity=".5"/><circle cx="380" cy="30" r="1" fill="white" fill-opacity=".45"/><circle cx="600" cy="70" r=".9" fill="white" fill-opacity=".4"/><circle cx="1100" cy="45" r="1.2" fill="white" fill-opacity=".5"/><circle cx="1350" cy="75" r="1" fill="white" fill-opacity=".4"/>
+    </svg>
+  </div>
+  <div class="hero-overlay" aria-hidden="true"></div>
+  <div class="hero-content">
+    <span class="hero-tag">Erlensee Angelbachtal · seit 1981</span>
+    <h1 class="hero-h1">Sportfischer-Verein<br><span class="ac">Angelbachtal</span> e.V.</h1>
+    <p class="hero-sub">„Mehr als nur ein Hobby – Deine Heimat am Wasser."</p>
+    <div class="hero-btns">
+      <a href="#mitgliedschaft" class="btn btn-primary">Mitglied werden</a>
+      <a href="#verein" class="btn btn-outline-w">Mehr erfahren</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ═══════════════════ VEREIN ═══════════════════ -->
+<section class="section" id="verein" aria-labelledby="verein-h">
+  <div class="container">
+
+    <!-- Bild + Termine nebeneinander -->
+    <div class="verein-hero-grid rv">
+      <div>
+        <div class="photo photo-4-3">
+          <div class="photo-icon">📸</div>
+          <div class="photo-label">FOTO: Erlensee / Vereinsgelände</div>
+          <div class="photo-hint">Empfohlene Größe: 1200 × 900 px</div>
+        </div>
+      </div>
+      <div>
+        <p class="section-label">Termine &amp; Treffen</p>
+        <h2 class="sh" id="verein-h">Unser <span class="ac">Vereinsjahr</span></h2>
+        <div class="sh-line"></div>
+        <p style="font-size:14px;color:var(--mid);line-height:1.8;margin-bottom:20px">Die wichtigsten Termine auf einen Blick – das vollständige Programm findet ihr im <a href="#termine" style="color:var(--blue);font-weight:600">Veranstaltungskalender 2026</a>.</p>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;gap:12px;padding:10px 14px;background:var(--blue-soft);border-radius:8px;font-size:13px;align-items:center"><span style="font-weight:700;color:var(--blue);width:90px;flex-shrink:0">Apr. 2026</span><span style="color:var(--mid)">Anangeln (Jugend + Erwachsene gemeinsam)</span></div>
+          <div style="display:flex;gap:12px;padding:10px 14px;background:var(--blue-soft);border-radius:8px;font-size:13px;align-items:center"><span style="font-weight:700;color:var(--blue);width:90px;flex-shrink:0">Mai 2026</span><span style="color:var(--mid)">Vatertags-Angeln · Pfingstmarkt Straßenfest</span></div>
+          <div style="display:flex;gap:12px;padding:10px 14px;background:var(--blue-soft);border-radius:8px;font-size:13px;align-items:center"><span style="font-weight:700;color:var(--blue);width:90px;flex-shrink:0">Jun. 2026</span><span style="color:var(--mid)">Königsangeln · Neckar Angeln Heilbronn</span></div>
+          <div style="display:flex;gap:12px;padding:10px 14px;background:var(--blue-soft);border-radius:8px;font-size:13px;align-items:center"><span style="font-weight:700;color:var(--blue);width:90px;flex-shrink:0">Jul. 2026</span><span style="color:var(--mid)">Vereinsfest mit Senioren</span></div>
+          <div style="display:flex;gap:12px;padding:10px 14px;background:var(--blue-soft);border-radius:8px;font-size:13px;align-items:center"><span style="font-weight:700;color:var(--blue);width:90px;flex-shrink:0">Sep. 2026</span><span style="color:var(--mid)">Vereinsangeln · Forellen räuchern</span></div>
+          <div style="display:flex;gap:12px;padding:10px 14px;background:var(--blue-soft);border-radius:8px;font-size:13px;align-items:center"><span style="font-weight:700;color:var(--blue);width:90px;flex-shrink:0">Nov. 2026</span><span style="color:var(--mid)">Weihnachtsmarkt Angelbachtal</span></div>
+        </div>
+        <a href="#termine" class="btn btn-outline" style="margin-top:20px;display:inline-flex">Alle Termine →</a>
+      </div>
+    </div>
+
+    <!-- Taglines -->
+    <div class="taglines rv">
+      <p class="tagline-1">„Anbeißen, Abschalten, Angelbachtal."</p>
+      <p class="tagline-2">„Mehr als nur ein Hobby – Deine Heimat am Wasser."</p>
+    </div>
+
+    <!-- Vorstand -->
+    <div class="rv">
+      <p class="section-label">Vorstand</p>
+      <h2 class="sh">Unser <span class="ac">Team</span></h2>
+      <div class="sh-line"></div>
+    </div>
+    <div class="vorstand-grid rv d1">
+      <div>
+        <div class="photo photo-3-2">
+          <div class="photo-icon">📸</div>
+          <div class="photo-label">FOTO: Der Vorstand</div>
+          <div class="photo-hint">Gruppenfoto, z.B. am Erlensee · 1200 × 800 px</div>
+        </div>
+      </div>
+      <div>
+        <ul class="vorstand-list" aria-label="Vorstandsmitglieder">
+          <li class="vorstand-item"><span class="vorstand-role">1. Vorsitzender</span><span class="vorstand-name">Michael Fischer</span></li>
+          <li class="vorstand-item"><span class="vorstand-role">2. Vorsitzender / Gewässerwart</span><span class="vorstand-name">Sven Nagel</span></li>
+          <li class="vorstand-item"><span class="vorstand-role">3. Vorsitzender / Kassier</span><span class="vorstand-name">Hans Josef Lakatos</span></li>
+          <li class="vorstand-item"><span class="vorstand-role">Schriftführerin</span><span class="vorstand-name">Lenka Fischer</span></li>
+          <li class="vorstand-item"><span class="vorstand-role">Gerätewart</span><span class="vorstand-name">Dennis Wachter</span></li>
+          <li class="vorstand-item"><span class="vorstand-role">Sportwart</span><span class="vorstand-name">Holger Nagel</span></li>
+          <li class="vorstand-item"><span class="vorstand-role">Protokollführer</span><span class="vorstand-name">Thomas Kirschenlohr</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Über uns Text -->
+    <div style="max-width:820px;margin:72px auto 0" class="rv">
+      <p class="section-label" style="text-align:center">Über uns</p>
+      <h2 class="sh" style="text-align:center">Angeln mit <span class="ac">Geschichte und Herz</span></h2>
+      <div class="sh-line" style="margin:14px auto 28px"></div>
+      <p style="font-size:15px;line-height:1.9;color:var(--mid);margin-bottom:16px">Der Sportfischerverein Angelbachtal e.V. zählt zu den ersten gegründeten Vereinen im Ort – aktiv seit 1981. Seitdem stehen wir für gemeinschaftliches Angeln, gelebte Vereinsarbeit und ein starkes Miteinander.</p>
+    </div>
+
+    <!-- Gewässer -->
+    <div style="margin-top:72px">
+      <div class="rv" style="text-align:center;max-width:680px;margin:0 auto 40px">
+        <p class="section-label">Unsere Gewässer</p>
+        <h2 class="sh">Der <span class="ac">Erlensee</span> &amp; der <span class="ac">Waldangelbach</span></h2>
+        <div class="sh-line" style="margin:14px auto 0"></div>
+      </div>
+      <div class="gewaesser-grid rv d2">
+        <div class="gewaesser-card">
+          <div class="gc-head">
+            <h3>🏞️ Erlensee</h3>
+            <p>Das Herzstück des Vereins</p>
+          </div>
+          <div class="gc-body">
+            <div class="photo photo-16-9" style="margin-bottom:20px;border-radius:8px">
+              <div class="photo-icon">📸</div>
+              <div class="photo-label">FOTO: Erlensee</div>
+              <div class="photo-hint">Panoramaaufnahme vom See · 1200 × 675 px</div>
+            </div>
+            <p>Im Mittelpunkt unseres Vereinslebens steht der Erlensee – ein kleiner, aber sehr gepflegter See, der in den 1980er-Jahren von unseren Gründungsmitgliedern geschaffen wurde. Er überzeugt durch seine ruhige Lage, angenehme Atmosphäre und gute Erreichbarkeit. Nicht nur zum Angeln, sondern auch als Ort der Erholung ist er für viele in Angelbachtal ein beliebtes Ziel.</p>
+          </div>
+        </div>
+        <div class="gewaesser-card">
+          <div class="gc-head" style="background:linear-gradient(135deg,#0891b2,#0e7490)">
+            <h3>🌊 Waldangelbach</h3>
+            <p>Für Abenteurer mit Köpfchen</p>
+          </div>
+          <div class="gc-body">
+            <div class="photo photo-16-9" style="margin-bottom:20px;border-radius:8px">
+              <div class="photo-icon">📸</div>
+              <div class="photo-label">FOTO: Waldangelbach</div>
+              <div class="photo-hint">Bach/Naturaufnahme · 1200 × 675 px</div>
+            </div>
+            <p>Ergänzt wird unser Revier durch den Waldangelbach. Unscheinbar auf den ersten Blick, schlängelt sich der schmale Bach durch Angelbachtal – und genau hier liegt sein Reiz. Wer mit Geduld und geschultem Blick fischt, wird überrascht sein, was sich dort alles finden lässt.</p>
+            <p>Der Waldangelbach fließt rund 4 km durchs Angelbachtal. In Gumpen und Asten lauern Bachforellen und Döbel, wer Glück hat kann Krebse beim Herumkrabbeln beobachten. Wer hier angeln will, braucht Kondition und Köpfchen – durchs Gestrüpp und unter Ästen hindurch wird jede Forelle zur kleinen Herausforderung.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Was uns besonders macht -->
+    <div class="highlights-grid rv d3" style="margin-top:20px">
+      <div class="hl-card">
+        <div class="hl-icon">🏞️</div>
+        <p class="hl-title">Zwei Gewässer</p>
+        <p class="hl-desc">Erlensee &amp; Waldangelbach – für jeden Angelstil das Richtige</p>
+      </div>
+      <div class="hl-card">
+        <div class="hl-icon">🏡</div>
+        <p class="hl-title">Vereinsheim &amp; Grillhütte</p>
+        <p class="hl-desc">Eigenes Vereinsheim mit Grillhütte und Räucherofen zur gemeinschaftlichen Nutzung</p>
+      </div>
+      <div class="hl-card">
+        <div class="hl-icon">🌿</div>
+        <p class="hl-title">Gepflegte Anlage</p>
+        <p class="hl-desc">Gepflegte Anlage mit Erholungscharakter – mehr als nur Angeln</p>
+      </div>
+    </div>
+
+    <!-- Erlensee Details -->
+    <div class="erlensee-box rv d2" style="margin-top:40px">
+      <p class="section-label">Erlensee – Das Herzstück des Vereins</p>
+      <div class="erlensee-stats">
+        <div class="erlensee-stat"><div class="es-num">4.500</div><div class="es-label">m² Fläche</div></div>
+        <div class="erlensee-stat"><div class="es-num">~3</div><div class="es-label">Meter Tiefe</div></div>
+        <div class="erlensee-stat"><div class="es-num">1981</div><div class="es-label">Gründungsjahr</div></div>
+      </div>
+      <p style="font-size:14.5px;line-height:1.85;color:var(--mid);margin-bottom:16px">Der Erlensee ist mit einer Größe von etwa 4500 m² und einer Tiefe ca. 3 Metern das Hauptgewässer unseres Vereins. In seiner ruhigen, idyllischen Umgebung finden sowohl Angler als auch Erholungssuchende den idealen Ort zum Entspannen.</p>
+      <p style="font-size:14.5px;line-height:1.85;color:var(--mid);margin-bottom:16px">Der See beherbergt eine Vielzahl an Fischarten, darunter Karpfen, Forellen, Schleien und Aal. Wer am Ufer sitzt, kann nicht nur beim Angeln entspannen, sondern auch die Vielfalt der Natur genießen – sei es durch das Beobachten von Vögeln, das Quaken der Frösche oder das Rascheln von Kleintieren rund um den See.</p>
+      <div>
+        <p style="font-size:12px;color:#64748b;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px">Fischarten im Erlensee</p>
+        <div class="fish-chips">
+          <span class="fish-chip">🐟 Karpfen</span>
+          <span class="fish-chip">🐟 Forellen</span>
+          <span class="fish-chip">🐟 Schleien</span>
+          <span class="fish-chip">🐟 Aal</span>
+        </div>
+      </div>
+      <div style="margin-top:20px">
+        <div class="photo photo-16-9" style="border-radius:8px">
+          <div class="photo-icon">📸</div>
+          <div class="photo-label">FOTO: Erlensee Gesamtansicht</div>
+          <div class="photo-hint">Schöne Panorama- oder Stimmungsaufnahme · 1400 × 790 px</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════ NEWS ═══════════════════ -->
+<section class="section-alt" id="news" aria-labelledby="news-h">
+  <div class="container">
+    <div style="text-align:center;max-width:640px;margin:0 auto 52px" class="rv">
+      <p class="section-label">Aktuelles</p>
+      <h2 class="sh" id="news-h">News &amp; <span class="ac">Berichte</span></h2>
+      <div class="sh-line" style="margin:14px auto 0"></div>
+    </div>
+    <div class="grid-auto">
+
+      <!-- NEWS 1 -->
+      <article class="card card-hover news-card rv d1" aria-label="Frühlingserwachen am Erlensee">
+        <div class="photo photo-16-9" style="margin-bottom:20px">
+          <div class="photo-icon">📸</div>
+          <div class="photo-label">FOTO: Erdkröten / Kaulquappen am Erlensee</div>
+          <div class="photo-hint">Naturaufnahme Frühling · 1200 × 675 px</div>
+        </div>
+        <span class="news-badge green">Natur &amp; Verein</span>
+        <h3>Frühlingserwachen am Erlensee: Nachwuchs im Wasser und frischer Wind im Vorstand</h3>
+        <p>Am Erlensee herrscht aktuell reges Treiben! Während die Natur erwacht, gibt es auch aus dem Vereinsleben wichtige Neuigkeiten zu berichten.</p>
+        <h4>Naturschauspiel am Ufer</h4>
+        <p>Die Erdkröten haben unseren See zur Fortpflanzung aufgesucht. In den Flachwasserzonen flitzen bereits unzählige Kaulquappen in dichten Schwärmen durch das Wasser – ein hervorragendes Zeichen für die hohe Wasserqualität und das ökologische Gleichgewicht unseres Gewässers.</p>
+        <p><strong>Bitte beachten:</strong> Achtet beim Betreten der Uferbereiche besonders auf eure Tritte, um die kleinen Wanderer nicht zu gefährden!</p>
+        <h4>Rückblick zur Generalversammlung</h4>
+        <p>Am 20. April fand die diesjährige Generalversammlung des Sportfischervereins statt. Ein zentraler Punkt der Tagesordnung war die Neuwahl des Vorstands.</p>
+        <ul class="news-list" aria-label="Neuer Vorstand">
+          <li><strong>1. Vorsitzender:</strong> Michael Fischer</li>
+          <li><strong>2. Vorsitzender / Gewässerwart:</strong> Sven Nagel</li>
+          <li><strong>3. Vorsitzender / Kassier:</strong> Hans Josef Lakatos</li>
+          <li><strong>Schriftführerin:</strong> Lenka Fischer</li>
+          <li><strong>Gerätewart:</strong> Dennis Wachter</li>
+          <li><strong>Sportwart:</strong> Holger Nagel</li>
+          <li><strong>Protokollführer:</strong> Thomas Kirschenlohr</li>
+        </ul>
+        <p style="margin-top:12px">Wir freuen uns, mit diesem engagierten Team in die neue Saison zu starten. Ein herzliches Dankeschön gilt allen Mitgliedern für das entgegengebrachte Vertrauen und die rege Teilnahme. Auf ein erfolgreiches gemeinsames Jahr am Erlensee – voller lebendiger Vielfalt im Wasser und in unserer Gemeinschaft!</p>
+      </article>
+
+      <!-- NEWS 2 -->
+      <article class="card card-hover news-card rv d2" aria-label="Saisonstart 2026">
+        <div class="photo photo-16-9" style="margin-bottom:20px">
+          <div class="photo-icon">📸</div>
+          <div class="photo-label">FOTO: Anangeln / Gruppe am See</div>
+          <div class="photo-hint">Gruppenfoto Saisonstart · 1200 × 675 px</div>
+        </div>
+        <span class="news-badge" style="background:#0066ff">26. April 2026</span>
+        <h3>Petri Heil am Erlensee: Angelsaison erfolgreich eröffnet!</h3>
+        <p>Am 26. April 2026 herrschte am Erlensee wieder reges Treiben. Pünktlich um 07:30 Uhr fanden sich mehr als 20 Vereinsmitglieder des SFV Angelbachtal am Erlensee ein, um gemeinsam die diesjährige Angelsaison zu beginnen. Schon früh am Morgen lag eine erwartungsvolle Stimmung in der Luft, und die Vorfreude auf einen gelungenen Saisonstart war deutlich spürbar.</p>
+        <div class="photo photo-4-3" style="margin:16px 0">
+          <div class="photo-icon">📸</div>
+          <div class="photo-label">FOTO: Vereinsmitglieder beim Anangeln</div>
+          <div class="photo-hint">Gruppenaufnahme · 900 × 675 px</div>
+        </div>
+        <p>Bei strahlendem Wetter und ausgelassener Atmosphäre machten sich die Angler ans Werk: Die ersten Köder wurden ins Wasser ausgeworfen, und jeder hoffte auf einen guten Fang. Damit niemand hungrig am Ufer warten musste, kümmerte sich eine mobile Verpflegung um das leibliche Wohl der Teilnehmer. Frische Brötchen und warme Würstchen wurden direkt am Platz angeboten, sodass für ausreichend Stärkung gesorgt war und die Gemeinschaft zusätzlich gefördert wurde.</p>
+        <p>Hier geht ein besonderer Dank an Holger. Zum Abschluss wünschen wir allen Anglern eine erfolgreiche Saison und stets einen guten Fang!</p>
+        <p style="font-weight:700;color:var(--blue);margin-top:14px">Petri Heil! 🎣</p>
+      </article>
+
+      <!-- NEWS 3 -->
+      <article class="card card-hover news-card rv d3" aria-label="Muttertag am See">
+        <div class="photo photo-16-9" style="margin-bottom:20px">
+          <div class="photo-icon">📸</div>
+          <div class="photo-label">FOTO: Muttertag am Vereinsheim</div>
+          <div class="photo-hint">Stimmungsfotos Räucherofen / Grill · 1200 × 675 px</div>
+        </div>
+        <span class="news-badge" style="background:#0066ff">10. Mai 2026</span>
+        <h3>Ein Muttertag wie aus dem Bilderbuch! ☀️🐟</h3>
+        <p>Was für ein Tag! Am vergangenen Sonntag kam am Vereinsheim des SFVA alles zusammen: Strahlender Sonnenschein, beste Laune und eine tolle Gemeinschaft.</p>
+        <h4>Räucher-Action &amp; Grill-Genuss</h4>
+        <p>Ein absolutes Highlight waren unsere Räucheröfen. Der Duft von frisch geräucherten Forellen lag in der Luft und hat mal wieder gezeigt, dass Selbstgefangenes am besten schmeckt, wenn man es gemeinsam zubereitet. Parallel dazu wurde am Grill fleißig gebrutzelt – so lässt es sich leben!</p>
+        <div class="photo photo-4-3" style="margin-top:16px">
+          <div class="photo-icon">📸</div>
+          <div class="photo-label">FOTO: Räucherofen / Grill in Aktion</div>
+          <div class="photo-hint">Stimmungsfotos vom Event · 900 × 675 px</div>
+        </div>
+      </article>
+
+      <!-- NEWS 4 -->
+      <article class="card card-hover news-card rv d4" aria-label="Saisonstart Fass">
+        <div class="photo photo-16-9" style="margin-bottom:20px">
+          <div class="photo-icon">📸</div>
+          <div class="photo-label">FOTO: Fassanstich / Grillen</div>
+          <div class="photo-hint">Fotos vom Saisonstart-Event · 1200 × 675 px</div>
+        </div>
+        <span class="news-badge" style="background:#7c3aed">Saisonstart</span>
+        <h3>O'zapft is am Wasser! 🍺</h3>
+        <p>Wie auf der GV versprochen, wurde das Fass angestochen. Bei kühlen Getränken und bester Stimmung haben wir die Angel- und Grillsaison 2026 gebührend eingeläutet. Es wurde gelacht, gefachsimpelt und einfach die Zeit am Ufer genossen.</p>
+        <p>Ein riesiges Dankeschön an alle, die dabei waren und diesen Tag so besonders gemacht haben. Genau das macht unser Vereinsleben aus!</p>
+        <div class="photo photo-4-3" style="margin-top:16px">
+          <div class="photo-icon">📸</div>
+          <div class="photo-label">FOTO: Weitere Fotos vom Event</div>
+          <div class="photo-hint">900 × 675 px</div>
+        </div>
+      </article>
+
+    </div>
+    <div class="news-more rv">
+      <button class="btn btn-outline" onclick="alert('Weitere News folgen…')">Weitere Beiträge laden</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ MITGLIEDSCHAFT ═══════════════════ -->
+<section class="section" id="mitgliedschaft" aria-labelledby="mitgl-h">
+  <div class="container">
+    <div style="text-align:center;max-width:680px;margin:0 auto 52px" class="rv">
+      <p class="section-label">Mitglied werden</p>
+      <h2 class="sh" id="mitgl-h">Dein Platz am <span class="ac">Wasser</span> wartet schon!</h2>
+      <div class="sh-line" style="margin:14px auto 20px"></div>
+      <p style="font-size:15px;color:var(--mid);line-height:1.8">Wir sind mehr als nur ein Verein – wir sind eine Gemeinschaft aus leidenschaftlichen Naturfreunden. Da unsere Runde in letzter Zeit etwas kleiner geworden ist, suchen wir dich, um wieder gemeinsam Erinnerungen zu schaffen.</p>
+    </div>
+
+    <div style="max-width:760px;margin:0 auto">
+      <p style="text-align:center;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#64748b;margin-bottom:28px">Deine Mitgliedschaft auf einen Blick – wir halten unsere Beiträge fair, um den Einstieg so einfach wie möglich zu machen</p>
+      <div class="grid-2 rv d1">
+        <div class="price-card">
+          <div class="pc-head">
+            <div class="pc-icon">🎣</div>
+            <h3>Erwachsene</h3>
+            <p>Inkl. Aufnahmebeitrag</p>
+          </div>
+          <div class="pc-body">
+            <div class="photo photo-4-3" style="margin-bottom:20px;border-radius:8px">
+              <div class="photo-icon">📸</div>
+              <div class="photo-label">FOTO: Erwachsene am See</div>
+              <div class="photo-hint">900 × 675 px</div>
+            </div>
+            <div class="pc-price">120 €</div>
+            <p class="pc-period">Erste 2 Jahre (inkl. Aufnahmebeitrag)</p>
+            <div class="pc-then">Ab dem 3. Jahr beträgt der Jahresbeitrag: <strong>60 €</strong></div>
+          </div>
+        </div>
+        <div class="price-card">
+          <div class="pc-head cyan">
+            <div class="pc-icon">👦</div>
+            <h3>Jugendliche</h3>
+            <p>Inkl. Aufnahmebeitrag</p>
+          </div>
+          <div class="pc-body">
+            <div class="photo photo-4-3" style="margin-bottom:20px;border-radius:8px">
+              <div class="photo-icon">📸</div>
+              <div class="photo-label">FOTO: Jugendgruppe</div>
+              <div class="photo-hint">900 × 675 px</div>
+            </div>
+            <div class="pc-price cyan">60 €</div>
+            <p class="pc-period">Erste 2 Jahre (inkl. Aufnahmebeitrag)</p>
+            <div class="pc-then">Ab dem 3. Jahr beträgt der Jahresbeitrag: <strong>30 €</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Vom Haken auf dem Teller -->
+    <div class="grill-box rv d2" style="max-width:900px;margin:48px auto 0">
+      <h3>🔥 Vom Haken auf dem Teller</h3>
+      <p>Das Schönste kommt bei uns nach dem Fang: Pack deine Familie ein und lass den Tag in unserer gemütlichen Grillhütte ausklingen. Ob frisch über der Glut oder goldbraun aus dem Räucherofen – es gibt nichts Besseres als den eigenen Fang in guter Gesellschaft zu genießen.</p>
+      <div style="margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:16px">
+        <div class="photo photo-4-3" style="border-radius:8px">
+          <div class="photo-icon">📸</div>
+          <div class="photo-label">FOTO: Grillhütte / Räucherofen</div>
+          <div class="photo-hint">900 × 675 px</div>
+        </div>
+        <div class="photo photo-4-3" style="border-radius:8px">
+          <div class="photo-icon">📸</div>
+          <div class="photo-label">FOTO: Grillen / Gemeinschaft</div>
+          <div class="photo-hint">900 × 675 px</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-box rv d3">
+      <h3>Hast du Lust, die Rute bei uns auszuwerfen?</h3>
+      <p>Wir freuen uns dich kennenzulernen! Wenn du Fragen hast oder direkt Mitglied werden möchtest, melde dich einfach bei uns.</p>
+      <div class="cta-btns">
+        <a href="https://wa.me/491707617350" class="btn btn-whatsapp" target="_blank" rel="noopener">💬 WhatsApp</a>
+        <a href="mailto:info@sportfischer-angelbachtal.de" class="btn btn-primary">📧 E-Mail</a>
+      </div>
+      <div class="contact-info">
+        <a href="mailto:info@sportfischer-angelbachtal.de">📧 info@sportfischer-angelbachtal.de</a>
+        <a href="tel:+491707617350">📞 +49 (0) 170 7617 350</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ VEREINSLEBEN ═══════════════════ -->
+<section class="section-alt" id="vereinsleben" aria-labelledby="vl-h">
+  <div class="container">
+    <div style="text-align:center;max-width:640px;margin:0 auto 52px" class="rv">
+      <p class="section-label">Gemeinschaft</p>
+      <h2 class="sh" id="vl-h">Unser <span class="ac">Vereinsleben</span></h2>
+      <div class="sh-line" style="margin:14px auto 0"></div>
+    </div>
+    <div class="grid-3">
+
+      <article class="vl-card card-hover rv d1">
+        <div class="photo photo-16-9">
+          <div class="photo-icon">📸</div>
+          <div class="photo-label">FOTO: Muttertag Event</div>
+          <div class="photo-hint">1200 × 675 px</div>
+        </div>
+        <div class="vl-card-body">
+          <p class="vl-date">10.05.2026</p>
+          <h3>Muttertag am See</h3>
+          <p>Ein Muttertag wie aus dem Bilderbuch! Strahlender Sonnenschein und tolle Gemeinschaft am Vereinsheim. Absolutes Highlight waren die Räucheröfen: Der Duft von frisch geräucherten Forellen lag in der Luft. Parallel dazu wurde am Grill fleißig gebrutzelt – gemeinsam schmeckt es einfach am besten!</p>
+        </div>
+      </article>
+
+      <article class="vl-card card-hover rv d2">
+        <div class="photo photo-16-9">
+          <div class="photo-icon">📸</div>
+          <div class="photo-label">FOTO: Fassanstich / Grillen</div>
+          <div class="photo-hint">1200 × 675 px</div>
+        </div>
+        <div class="vl-card-body">
+          <p class="vl-date">Saisonstart 2026</p>
+          <h3>O'zapft is am Wasser!</h3>
+          <p>Wie auf der GV versprochen, wurde das Fass angestochen. Bei kühlen Getränken und bester Stimmung haben wir die Angel- und Grillsaison 2026 gebührend eingeläutet. Es wurde gelacht, gefachsimpelt und einfach die Zeit am Ufer genossen. Ein riesiges Dankeschön an alle!</p>
+        </div>
+      </article>
+
+      <article class="vl-card card-hover rv d3">
+        <div class="photo photo-16-9">
+          <div class="photo-icon">📸</div>
+          <div class="photo-label">FOTO: Anangeln / Saisonstart</div>
+          <div class="photo-hint">1200 × 675 px</div>
+        </div>
+        <div class="vl-card-body">
+          <p class="vl-date">26.04.2026</p>
+          <h3>Angelsaison-Eröffnung</h3>
+          <p>Die ersten Köder wurden ausgeworfen! Damit niemand hungrig warten musste, gab es eine mobile Verpflegung direkt am Platz. Frische Brötchen und warme Würstchen sorgten für die nötige Stärkung. Besonderer Dank geht hier an Holger. Petri Heil für die neue Saison!</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ TERMINKALENDER 2026 ═══════════════════ -->
+<section class="section" id="termine" aria-labelledby="termine-h">
+  <div class="container">
+    <div style="text-align:center;max-width:640px;margin:0 auto 48px" class="rv">
+      <p class="section-label">Planung</p>
+      <h2 class="sh" id="termine-h">Veranstaltungskalender <span class="ac">2026</span></h2>
+      <div class="sh-line" style="margin:14px auto 0"></div>
+    </div>
+    <div class="termine-wrap rv d1">
+      <table class="termine-table" aria-label="Veranstaltungskalender 2026">
+        <thead><tr><th>Datum / Zeit</th><th>Aktion / Termin</th><th>Ort</th></tr></thead>
+        <tbody>
+          <tr class="month-row"><td colspan="3">Januar 2026</td></tr>
+          <tr><td>Sa. 17.01. / 31.01.</td><td>Winterdienst – Rückschnitt</td><td>Erlensee</td></tr>
+          <tr><td>Sa. 24.01. · 18:00 Uhr</td><td>Winterfeier</td><td>TSV Clubhaus in Eichtersheim</td></tr>
+          <tr class="month-row"><td colspan="3">Februar 2026</td></tr>
+          <tr><td>Mo. 23.02.</td><td>Generalversammlung</td><td>TSV Clubhaus in Eichtersheim</td></tr>
+          <tr class="month-row"><td colspan="3">März 2026</td></tr>
+          <tr><td>So. 15.03. (?)</td><td>Angelbach – Putzaktion</td><td>Angelbach</td></tr>
+          <tr class="month-row"><td colspan="3">April 2026</td></tr>
+          <tr><td>Sa. 11.04.</td><td>Forellen räuchern / Verkauf</td><td>Erlensee oder TSV</td></tr>
+          <tr><td>Mo. 20.04.</td><td>Mitgliederversammlung</td><td>Erlensee – Fischerhütte</td></tr>
+          <tr class="termine-bold"><td>So. 26.04.</td><td>Anangeln (Jugend + Erw. gemeinsam)</td><td>Erlensee</td></tr>
+          <tr class="month-row"><td colspan="3">Mai 2026</td></tr>
+          <tr><td>Fr. 01.05.</td><td>Maiwanderung / Grillfest</td><td>(unter Vorbehalt)</td></tr>
+          <tr><td>Do. 14.05.</td><td>Vatertags-Angeln</td><td>Erlensee</td></tr>
+          <tr><td>Mo. 18.05.</td><td>Mitgliederversammlung</td><td>Erlensee – Fischerhütte</td></tr>
+          <tr class="termine-bold"><td>24.05. – 25.05.</td><td>Pfingstmarkt – Straßenfest</td><td>Beteiligung wie 2025</td></tr>
+          <tr class="month-row"><td colspan="3">Juni 2026</td></tr>
+          <tr class="termine-bold"><td>Sa. 13.06. / So. 14.06.</td><td>Königsangeln</td><td>Erlensee</td></tr>
+          <tr><td>So. 21.06.</td><td>Neckar Angeln</td><td>Neckar Heilbronn</td></tr>
+          <tr class="month-row"><td colspan="3">Juli 2026</td></tr>
+          <tr class="termine-bold"><td>Sa. 11.07.</td><td>Vereinsfest mit Senioren</td><td>Erlensee (ggf. Flammlachs)</td></tr>
+          <tr><td>Mo. 20.07.</td><td>Mitgliederversammlung / Info Tag</td><td>Fischerhütte / Mobil des LFV</td></tr>
+          <tr class="month-row"><td colspan="3">August 2026</td></tr>
+          <tr><td>August</td><td>Nur Vorstandssitzungen</td><td>Erlensee – Fischerhütte</td></tr>
+          <tr class="month-row"><td colspan="3">September 2026</td></tr>
+          <tr><td>So. 13.09.</td><td>Vereinsangeln</td><td>Erlensee / Büchig</td></tr>
+          <tr><td>Di. 15.09.</td><td>Mitgliederversammlung</td><td>Erlensee – Fischerhütte</td></tr>
+          <tr class="termine-bold"><td>Sa. 26.09.</td><td>Forellen räuchern / Verkauf</td><td>Erlensee oder TSV</td></tr>
+          <tr class="month-row"><td colspan="3">Oktober 2026</td></tr>
+          <tr><td>Di. 06.10.</td><td>Info-Veranstaltung</td><td>Erlensee – Fischerhütte</td></tr>
+          <tr class="termine-bold"><td>Mo. 12.10.</td><td>Abangeln</td><td>Erlensee</td></tr>
+          <tr class="termine-bold"><td>Sa. 24.10.</td><td>Forellen räuchern / Verkauf</td><td>Erlensee oder TSV</td></tr>
+          <tr class="month-row"><td colspan="3">November 2026</td></tr>
+          <tr class="termine-bold"><td>28.11. – 29.11.</td><td>Weihnachtsmarkt</td><td>Angelbachtal</td></tr>
+          <tr class="month-row"><td colspan="3">Dezember 2026</td></tr>
+          <tr><td>Mo. 14.12.</td><td>Mitgliederversammlung</td><td>Erlensee – Fischerhütte</td></tr>
+          <tr class="termine-bold"><td>Mi. 30.12.</td><td>Jahresabschluss</td><td>Erlensee – Fischerhütte</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:12px;color:#94a3b8;text-align:center;margin-top:12px">Fett = Hauptveranstaltungen · Alle Angaben ohne Gewähr, Änderungen vorbehalten</p>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<footer role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo" style="filter:brightness(2)">
+          <div class="logo-icon" style="background:rgba(255,255,255,.1)" aria-hidden="true">🎣</div>
+          <div class="logo-text"><strong>SFV Angelbachtal</strong><span>e.V. · seit 1981</span></div>
+        </a>
+        <p>Natur, Hobby und Leidenschaft am Erlensee Angelbachtal. Herzlich willkommen in unserer Gemeinschaft!</p>
+        <a href="https://www.facebook.com/people/Sportfischerverein-Angelbachtal-eV/61567288388487/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;color:#94a3b8;text-decoration:none;font-size:13px;margin-top:14px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#94a3b8'">
+          <span style="background:rgba(255,255,255,.08);border-radius:6px;width:26px;height:26px;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-family:Outfit,sans-serif;font-weight:700">f</span>
+          Facebook
+        </a>
+      </div>
+      <div>
+        <p class="footer-h">Navigation</p>
+        <ul class="footer-links">
+          <li><a href="#verein">Verein</a></li>
+          <li><a href="#news">News</a></li>
+          <li><a href="#mitgliedschaft">Mitgliedschaft</a></li>
+          <li><a href="#vereinsleben">Vereinsleben</a></li>
+          <li><a href="#termine">Termine 2026</a></li>
+          <li><a href="jugend.html">Jugend</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-h">Kontakt</p>
+        <ul class="footer-links">
+          <li><a href="mailto:info@sportfischer-angelbachtal.de">info@sportfischer-angelbachtal.de</a></li>
+          <li><a href="tel:+491707617350">+49 (0) 170 7617 350</a></li>
+          <li style="color:#475569;padding-top:4px">Finkenweg 12<br>74918 Angelbachtal</li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-h">Rechtliches</p>
+        <ul class="footer-links">
+          <li><a href="impressum.html">Impressum</a></li>
+          <li><a href="impressum.html#datenschutz">Datenschutz</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Sportfischer-Verein Angelbachtal e.V. · Alle Rechte vorbehalten.</span>
+      <span>Erlensee Angelbachtal · seit 1981</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Nav active state on scroll
+const nav = document.getElementById("nav");
+const sections = document.querySelectorAll("section[id], header");
+const navLinks = document.querySelectorAll(".nav-center a");
+window.addEventListener("scroll", () => {
+  // Shrink nav
+  nav.style.height = scrollY > 60 ? "56px" : "";
+  // Active link
+  let current = "";
+  sections.forEach(s => { if (scrollY >= s.offsetTop - 120) current = s.id; });
+  navLinks.forEach(a => {
+    a.classList.toggle("active", a.getAttribute("href") === "#" + current);
+  });
+}, { passive: true });
+
+// Scroll reveal
+const io = new IntersectionObserver(
+  e => e.forEach(x => x.isIntersecting && x.target.classList.add("vis")),
+  { threshold: 0.08 }
+);
+document.querySelectorAll(".rv").forEach(el => io.observe(el));
+</script>
+</body>
+</html>
